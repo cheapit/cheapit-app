@@ -16,6 +16,7 @@ class AuthGroup {
   static Map<String, String> headers = {};
   static SigninEmailPasswordCall signinEmailPasswordCall =
       SigninEmailPasswordCall();
+  static SignoutCall signoutCall = SignoutCall();
 }
 
 class SigninEmailPasswordCall {
@@ -118,7 +119,75 @@ class SigninEmailPasswordCall {
       );
 }
 
+class SignoutCall {
+  Future<ApiCallResponse> call({
+    String? refreshToken = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "refreshToken": "${refreshToken}",
+  "all": false
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'signout',
+      apiUrl: '${AuthGroup.baseUrl}/signout',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
 /// End auth Group Code
+
+/// Start Hasura Group Code
+
+class HasuraGroup {
+  static String baseUrl =
+      'https://yjyboestuencgstmzuld.hasura.eu-central-1.nhost.run/v1';
+  static Map<String, String> headers = {
+    'content-type': 'application/json',
+  };
+  static TestCall testCall = TestCall();
+}
+
+class TestCall {
+  Future<ApiCallResponse> call() async {
+    final ffApiRequestBody = '''
+{
+  "query": "query unnamedQuery1 { products(limit: 10) { item_code item_name } }",
+  "variables": {},
+  "operationName": "unnamedQuery1"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'test',
+      apiUrl: '${HasuraGroup.baseUrl}/graphql',
+      callType: ApiCallType.POST,
+      headers: {
+        'content-type': 'application/json',
+        'X-Hasura-User-Id': 'daf822d2-2d73-431f-8226-56e2b0480070',
+        'X-Hasura-Role': 'user',
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiJ9.eyJodHRwczovL2hhc3VyYS5pby9qd3QvY2xhaW1zIjp7IngtaGFzdXJhLWFsbG93ZWQtcm9sZXMiOlsibWUiLCJ1c2VyIl0sIngtaGFzdXJhLWRlZmF1bHQtcm9sZSI6InVzZXIiLCJ4LWhhc3VyYS11c2VyLWlkIjoiZGFmODIyZDItMmQ3My00MzFmLTgyMjYtNTZlMmIwNDgwMDcwIiwieC1oYXN1cmEtdXNlci1pcy1hbm9ueW1vdXMiOiJmYWxzZSJ9LCJzdWIiOiJkYWY4MjJkMi0yZDczLTQzMWYtODIyNi01NmUyYjA0ODAwNzAiLCJpYXQiOjE3MDEwNzk4MDgsImV4cCI6MTcwMTA4MDcwOCwiaXNzIjoiaGFzdXJhLWF1dGgifQ.5zcfZWFIKvTGa6YY5Zr1jDU0Z4vv_JvyY7xvfL-YWcE',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+/// End Hasura Group Code
 
 class ApiPagingParams {
   int nextPageNumber = 0;

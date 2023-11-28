@@ -1,3 +1,5 @@
+import '/auth/custom_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -478,42 +480,66 @@ class _AccountWidgetState extends State<AccountWidget> {
                       ),
                     ],
                   ),
-                  Container(
-                    width: double.infinity,
-                    height: 67.0,
-                    decoration: BoxDecoration(
-                      color: Color(0xFFF2F3F2),
-                      borderRadius: BorderRadius.circular(19.0),
-                    ),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Icon(
-                            Icons.logout_outlined,
-                            color: FlutterFlowTheme.of(context).primary,
-                            size: 24.0,
-                          ),
-                          Text(
-                            'Log Out',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                          ),
-                          Icon(
-                            Icons.settings_outlined,
-                            color: Color(0xFFF2F3F2),
-                            size: 24.0,
-                          ),
-                        ],
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      _model.apiSignout = await AuthGroup.signoutCall.call(
+                        refreshToken: currentAuthRefreshToken,
+                      );
+                      if ((_model.apiSignout?.succeeded ?? true)) {
+                        context.pushNamed(
+                          'login',
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.fade,
+                            ),
+                          },
+                        );
+                      }
+
+                      setState(() {});
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      height: 67.0,
+                      decoration: BoxDecoration(
+                        color: Color(0xFFF2F3F2),
+                        borderRadius: BorderRadius.circular(19.0),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            24.0, 0.0, 24.0, 0.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Icon(
+                              Icons.logout_outlined,
+                              color: FlutterFlowTheme.of(context).primary,
+                              size: 24.0,
+                            ),
+                            Text(
+                              'Log Out',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                            ),
+                            Icon(
+                              Icons.settings_outlined,
+                              color: Color(0xFFF2F3F2),
+                              size: 24.0,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

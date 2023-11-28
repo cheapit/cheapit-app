@@ -475,6 +475,7 @@ class _LoginWidgetState extends State<LoginWidget>
                 decoration: BoxDecoration(),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Align(
                       alignment: AlignmentDirectional(-1.00, 0.00),

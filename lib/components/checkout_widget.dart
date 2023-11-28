@@ -105,18 +105,18 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      'Delivery',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Readex Pro',
-                            color: Color(0xFF7C7C7C),
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.w600,
-                          ),
-                    ),
                     Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              8.0, 0.0, 0.0, 0.0),
+                          child: Icon(
+                            Icons.chevron_left,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 24.0,
+                          ),
+                        ),
                         Text(
                           'Select Method',
                           style:
@@ -126,16 +126,16 @@ class _CheckoutWidgetState extends State<CheckoutWidget> {
                                     fontWeight: FontWeight.w600,
                                   ),
                         ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              8.0, 0.0, 0.0, 0.0),
-                          child: Icon(
-                            Icons.chevron_right,
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            size: 24.0,
-                          ),
-                        ),
                       ],
+                    ),
+                    Text(
+                      'Delivery',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Readex Pro',
+                            color: Color(0xFF7C7C7C),
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600,
+                          ),
                     ),
                   ],
                 ),
