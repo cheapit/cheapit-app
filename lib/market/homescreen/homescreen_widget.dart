@@ -196,6 +196,11 @@ class _HomescreenWidgetState extends State<HomescreenWidget>
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          Icon(
+                            Icons.location_pin,
+                            color: Color(0xFF4C4F4D),
+                            size: 24.0,
+                          ),
                           Text(
                             'Dhaka, Banassre',
                             style: FlutterFlowTheme.of(context)
@@ -217,11 +222,6 @@ class _HomescreenWidgetState extends State<HomescreenWidget>
                                   fontSize: 18.0,
                                   fontWeight: FontWeight.w600,
                                 ),
-                          ),
-                          Icon(
-                            Icons.location_pin,
-                            color: Color(0xFF4C4F4D),
-                            size: 24.0,
                           ),
                         ],
                       ),

@@ -131,6 +131,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'Homescreen',
           path: '/homescreen',
+          requireAuth: true,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'Homescreen')
               : HomescreenWidget(),
@@ -163,6 +164,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'Explore',
           path: '/explore',
+          requireAuth: true,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'Explore')
               : ExploreWidget(),
@@ -170,6 +172,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'Beverages',
           path: '/beverages',
+          requireAuth: true,
           builder: (context, params) => BeveragesWidget(),
         ),
         FFRoute(
