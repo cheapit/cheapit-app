@@ -240,16 +240,11 @@ class _HomescreenWidgetState extends State<HomescreenWidget>
                   ),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Icon(
-                          Icons.search_sharp,
-                          color: Color(0xFF4C4F4D),
-                          size: 24.0,
-                        ),
                         Expanded(
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
@@ -261,7 +256,7 @@ class _HomescreenWidgetState extends State<HomescreenWidget>
                               decoration: InputDecoration(
                                 labelStyle:
                                     FlutterFlowTheme.of(context).labelMedium,
-                                hintText: 'Search Store',
+                                hintText: 'חיפוש פריט',
                                 hintStyle:
                                     FlutterFlowTheme.of(context).labelMedium,
                                 enabledBorder: InputBorder.none,
@@ -270,10 +265,16 @@ class _HomescreenWidgetState extends State<HomescreenWidget>
                                 focusedErrorBorder: InputBorder.none,
                               ),
                               style: FlutterFlowTheme.of(context).bodyMedium,
+                              textAlign: TextAlign.end,
                               validator: _model.textControllerValidator
                                   .asValidator(context),
                             ),
                           ),
+                        ),
+                        Icon(
+                          Icons.search_sharp,
+                          color: Color(0xFF4C4F4D),
+                          size: 24.0,
                         ),
                       ].divide(SizedBox(width: 8.0)),
                     ),
@@ -384,16 +385,6 @@ class _HomescreenWidgetState extends State<HomescreenWidget>
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            'Exclusive Offer',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  fontSize: 24.0,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                          ),
-                          Text(
                             'See all',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -401,6 +392,16 @@ class _HomescreenWidgetState extends State<HomescreenWidget>
                                   fontFamily: 'Readex Pro',
                                   color: FlutterFlowTheme.of(context).primary,
                                   fontSize: 16.0,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                          ),
+                          Text(
+                            'Exclusive Offer',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  fontSize: 24.0,
                                   fontWeight: FontWeight.w600,
                                 ),
                           ),
@@ -414,12 +415,8 @@ class _HomescreenWidgetState extends State<HomescreenWidget>
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                       ),
                       child: ListView(
-                        padding: EdgeInsets.fromLTRB(
-                          12.0,
-                          0,
-                          12.0,
-                          0,
-                        ),
+                        padding: EdgeInsets.symmetric(horizontal: 18.0),
+                        reverse: true,
                         primary: false,
                         shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
